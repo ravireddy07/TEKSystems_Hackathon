@@ -11,16 +11,16 @@
 
   ### Libraries Used/Required
       This are the following libraries used: 
-      ```
-         * [Pytesseract](https://pypi.org/project/pytesseract/)
-         * [Tensorflow](https://tensorflow.org)
-         * [OpenCV](https://opencv.org)
-         * [Numpy](https://numpy.org/)
-         * [Pandas](https://pandas.pydata.org/)
-         * [Matplotlib](https://matplotlib.org/)
-         * [Seaborn](https://seaborn.pydata.org/)
-         * [Scikit-Learn](https://scikit-learn.org/)
-      ```
+
+         * [Pytesseract](<https://pypi.org/project/pytesseract/>)
+         * [Tensorflow](<https://tensorflow.org>)
+         * [OpenCV](<https://opencv.org>)
+         * [Numpy](<https://numpy.org/>)
+         * [Pandas](<https://pandas.pydata.org/>)
+         * [Matplotlib](<https://matplotlib.org/>)
+         * [Seaborn](<https://seaborn.pydata.org/>)
+         * [Scikit-Learn](<https://scikit-learn.org/>)
+      
 
 
 ## Resources
