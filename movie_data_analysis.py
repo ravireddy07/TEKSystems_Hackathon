@@ -50,5 +50,31 @@ class NLP:
             for value,vectors in token_outputs.items():
                 if (self.output_vectors[q]==vectors):
                     self.output.append(value)
-        
+                    
+                    
+        if 'predict' in self.output:
+            return self.output
+        if self.number_of_constraints <= self.key_count:
+            return self.output
+        else:
+            print("Not enough keywords")
+            self.input_query()
+
+class Visualize:
+    def __init__(self):
+        self.df1 = pd.read_csv('./movie_name_char_mentions_centrality.csv')
+        self.df2 = pd.read_csv('./movie_emotion_year.csv')
+        self.df3 = pd.read_csv('./movie_singer_count.csv')
+        self.df4 = pd.read_csv('./movie_plot.csv')
+        self.df5 = pd.read_csv('./movie_all.csv')
+
+
+def genre(self, m):
+        col = self.df2[self.df2['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the genre.", sep="")
+            return
+        se = col['emotion'].value_counts()
+        gen = se[se == max(se.values)].index[0]
+
 
