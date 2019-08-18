@@ -9,11 +9,20 @@
 If you have a little information about a movie and wants to know more about it with that little hint/thing, This problem statement will help you to find the complete details and information about the movie using that hint which you'll provide as an input.
 
 
-## Problem Statement Usecases:
 
-  * Medical
+## Scope of Problem statement
 
+```
+  * Text processing
 
+  * Image processing
+
+  * Data Pre-processing
+
+  * Data Visualization
+
+  * Prediction with Machine Learning
+```
 
 ## opencv
 
@@ -45,23 +54,39 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
 
        This are the following libraries used:
 
-      * [Pytesseract](https://pypi.org/project/pytesseract/)
+    **Input Libraries**
 
-      * [Tensorflow](https://tensorflow.org)
+         * [Pytesseract](https://pypi.org/project/pytesseract/)
 
-      * [OpenCV](https://opencv.org)
+         * [Tensorflow](https://tensorflow.org)
 
-      * [Numpy](https://numpy.org/)
+         * [OpenCV](https://opencv.org)
 
-      * [Pandas](https://pandas.pydata.org/)
+    **Data Pre-processing**
 
-      * [Matplotlib](https://matplotlib.org/)
+         * [Numpy](https://numpy.org/)
 
-      * [Seaborn](https://seaborn.pydata.org/)
+         * [Pandas](https://pandas.pydata.org/)
 
-      * [Scikit-Learn](https://scikit-learn.org/)
+    **Data Visualization**
+
+         * [Matplotlib](https://matplotlib.org/)
+
+         * [Seaborn](https://seaborn.pydata.org/)
+
+    **ML Libraries**
+
+         * [Scikit-Learn](https://scikit-learn.org/)
 
 
+## Roles of Team Members
+
+```
+    1. G Ravi Kanth        -      Text and Image Processing
+    2. S Naga Sai Sasank Sarma -  Text and Image Processing
+    3. B Rohit Sai         -      Data Processing and Visualization
+    4. Prem Narayan Nagar  -      Data Processing and Visualization
+```
 
 ## Resources
 
