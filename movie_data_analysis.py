@@ -200,6 +200,19 @@ while ext!=1:
         elif tensor[i]=="plot":
             obj.plot(tensor[i+count])
             print("\n")
+
+        elif tensor[i]=="appearances":
+            obj.appearances(tensor[i+count], tensor[i+count+1])
+            count += 1
+            print("\n")
+            
+        elif tensor[i]=="year":
+            obj.year(tensor[i+count])
+            print("\n")
+            
+        elif tensor[i]=="songs":
+            obj.songs(tensor[i+count])
+            print("\n")
     
         
 
