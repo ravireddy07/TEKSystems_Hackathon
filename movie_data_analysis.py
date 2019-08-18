@@ -232,6 +232,114 @@ def genre(self, m):
                 return
             se = col['emotion'].value_counts()
             gen = se[se == max(se.values)].index[0]
+
+
+            
+        if(gen=="happy"):
+            genre = "Family-Entertainer"
+        elif(gen == "neutral"):
+            genre = "Drama"
+        elif(gen == "sad"):
+            genre = "Melo-Drama"
+        elif(gen == "angry"):
+            genre = "Action"
+        elif(gen == "fear"):
+            genre = "Horror"
+        elif(gen=="suprise"):
+            genre = "Suspence Thriller"
+        elif(gen=="disgust"):
+            genre = "Crime-Thriller"
+        print("GENRE:")
+        print("The movie ", m, " is a ", genre, " genre film.", sep="")
+        
+
+
+
+ def length_of_movie(self, m):
+        col = self.df1[self.df1['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the length of the movie", sep="")
+            return
+        se1 = col['mentions'].sum()
+        se2 = col['count'].sum()
+        se3 = col['total centrality'].sum()
+        se4 = col['average centrality'].sum()
+        result = se1 + (se3/se2) + se4                               
+        est_time = 150
+        est_result = 70
+        if(35<result<est_result):                                    
+            length = est_time
+        elif(30<result<est_result/2):
+            length = est_time-20
+        elif(70<result<est_result*2):
+            length = est_time+20
+        elif(140<result<est_result*4):
+            length = est_time+10
+        else:
+            length = est_time - 10
+        print("The predicted length of movie ", m, " on the basis of Centrality and Mentions is about ", np.round((length/60), 2),sep="")
+
+
+
+def predict(self):
+        df_area = self.trends(False)
+        print(df_area)
+        # Data-Preprocessing
+        z = pd.read_csv('./trend_emotion.csv')
+        X = z.iloc[:, :-1]
+        y = z.iloc[:, -1]
+        # Spliting Data 
+        from sklearn.model_selection import train_test_split
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+        # Linear Regression
+        from sklearn.linear_model import LinearRegression
+        lm = LinearRegression()
+        lm.fit(X_train, y_train)
+        predictions_lin = lm.predict(X_test)
+
+
+
+
+
+
+
+         def trends(self, bol):
+        df = {}
+        for i in range(10):
+            df[i] = self.df2[self.df2['year']==2008+i]['emotion'].value_counts().to_frame()
+            df[i].columns = [2008+i]
+        df_area = pd.concat([df[0], df[1], df[2], df[3], df[4], df[5], df[6], df[7],df[8], df[9]], axis=1)
+        if(bol):
+            print(df_area)
+            df_area.transpose().plot.area()
+            plt.xlabel("Year")
+            plt.ylabel("Range")
+            plt.show()
+        else:
+            return df_area
+
+
+
+
+
+       
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+            
+
         def image_movie(self, arr):
         for i in range(len(arr)):
             if arr[i] in self.df5.iloc[:, -1].values:
@@ -262,7 +370,11 @@ while ext!=1:
         continue
     elif choice == 2:
         print("Queries can be framed using the following to get optimum results:")
+
+        print("1.characters\n2.plot\n3.genre\n4.attitude\n5.appearances\n6.year\n7.songs\n8.length\n9.variation\n10.predict\n11.emotion\n12.role\n13.exit\n14.movie\n15.emotions\n16.character\n")
+
         print("1.characters\n2.plot\n3.genre\n4.year\n5.songs\n6.length\n7.role\n8.exit\n9.character\n")
+ 
         ob = NLP()
         ob.input_query()
         tensor = ob.processing()
@@ -347,4 +459,4 @@ while ext!=1:
             print("Query does not contain enough parameters.")
 
     
-        
+
