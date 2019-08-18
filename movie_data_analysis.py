@@ -157,6 +157,12 @@ class Visualize:
         singers = col['singer_name'].values.tolist()
         print("The movie", m, "has", col['song_count'].sum(), "songs.\n")
         print("And the singers are:\n", "\n ".join(singers))
+
+    def average_emotion(self, m, n):
+        col = self.df2[self.df2['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find average emotion.", sep="")
+            return
         
 
 def genre(self, m):
