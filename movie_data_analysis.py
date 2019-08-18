@@ -26,12 +26,13 @@ class ImageProcessing:
         print("Hold until we process your Image.....")
         image_data = np.asarray(img)
         dst = cv2.fastNlMeansDenoisingColored(image_data,None,10,10,7,21) #Denoiseing
-        cv2.imwrite(r'c:\data_analysis\deionise.png', dst)
+        cv2.imwrite(r'c:\data_analysis\deionise.png', dst)  #Saving the Denoised Image
 
         pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract 4.0.0/tesseract.exe"
         pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
-        gray = cv2.cvtColor(image_data, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(image_data, cv2.COLOR_BGR2GRAY) #Converting the image into grayscale
         cv2.imwrite(r'c:\data_analysis\enhancedGrayscaleLineCapture.png', gray)
+        #Increasing the threshold of the image(Sharpned)
         th1 = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
                                     cv2.THRESH_BINARY,11,2)
         ret2,th2 = cv2.threshold(gray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
@@ -48,6 +49,8 @@ class ImageProcessing:
         img2=Image.open(r'c:\data_analysis\enhancedGrayscaleThresholdLineCapture.png')
         img1=Image.open(r'c:\data_analysis\bluegreenred.png')
         images=Image.open(r'c:\data_analysis\deionise.png')
+
+        #Now, Extracting the Text from the denoised image
         result=pytesseract.image_to_string(images,lang='eng')
         output_temp=result.split()
         for i in range(len(output_temp)):
