@@ -50,5 +50,12 @@ class NLP:
             for value,vectors in token_outputs.items():
                 if (self.output_vectors[q]==vectors):
                     self.output.append(value)
+        if 'predict' in self.output:
+            return self.output
+        if self.number_of_constraints <= self.key_count:
+            return self.output
+        else:
+            print("Not enough keywords")
+            self.input_query()
         
 
