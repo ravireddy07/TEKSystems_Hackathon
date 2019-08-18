@@ -1,6 +1,6 @@
 ## TEKSystems_HiringHackathon
 
-       TEK Systems Hiring Final Round, 48 hour based Hackathon.
+       __TEK Systems Hiring Final Round, 48 hour based Hackathon__.
 
 
 
@@ -44,9 +44,9 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
 
        This are the following libraries used:
 
-      * [Pytesseract](https://pypi.org/project/pytesseract/)
+      * [Pytesseract](https://pypi.org/project/pytesseract/).
 
-      * [Tensorflow](https://tensorflow.org)
+      * [Tensorflow](https://tensorflow.org).
 
       * [OpenCV](https://opencv.org)
 
@@ -64,17 +64,19 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
 
 ## Resources
 
-     * GitHub Forums: <https://github.community/>
+     * [GitHub Forums](https://github.community/)
 
-     * Homepage: <https://opencv.org>
+     * [Homepage](https://opencv.org)
 
-     * Docs: <https://docs.opencv.org/master/>
+     * [Docs](https://docs.opencv.org/master/)
 
-     * Q&A forum: <http://answers.opencv.org>
+     * [Q&A forum](http://answers.opencv.org)
 
-     * Issue tracking: <https://github.com/opencv/opencv/issues>
+     * [Issue tracking](https://github.com/opencv/opencv/issues)
 
-     * Tensorflow Docs: <https://www.tensorflow.org/api_docs>
+     * [Tensorflow Docs](https://www.tensorflow.org/api_docs)
+     
+     * <https://github.com/llSourcell/Learn-Natural-Language-Processing-Curriculum/blob/master/README.md>
 
      * Udacity Discussion Forums and Few Slack Workspaces.
 
