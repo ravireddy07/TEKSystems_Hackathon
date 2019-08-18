@@ -17,11 +17,11 @@ If you have a little information about a movie and wants to know more about it w
 
 ## opencv
 
-  Here, OpenCV __build and source__ files are not included in the Repo due to big size.
+    Here, OpenCV __build and source__ files are not included in the Repo due to big size.
 
-  So, we have included those files in [G-Drive](https://drive.google.com/open?id=1hJIj4qZ1DPpRZxODQz6kRVLxDTADdyLo).
+    So, we have included those files in [G-Drive](https://drive.google.com/open?id=1hJIj4qZ1DPpRZxODQz6kRVLxDTADdyLo).
 
-  Download those files/folder and place it in workspace along with __README__ and __movie_data_analysis.py__.
+    Download those files/folder and place it in workspace along with __README__ and __movie_data_analysis.py__.
 
 
 ## Prerequisites
@@ -29,6 +29,7 @@ If you have a little information about a movie and wants to know more about it w
 
 
 ### Getting Started & Contribute
+
 
 Install Git on your local Machine and Fork the Repo. Follow the guidelines by [Git](https://guides.github.com/).
 Add and Commit changes and send pull requests.
