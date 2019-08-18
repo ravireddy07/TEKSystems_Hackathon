@@ -9,8 +9,14 @@
       Install Git on your local Machine and Fork the Repo. Follow the guidelines by [Git](https://guides.github.com/).
       Add and Commit changes and send pull requests.
 
+
+  ### Contributing
+
+      Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/How_to_contribute) before starting work on a pull request.
+
   ### Libraries Used/Required
-      This are the following libraries used: 
+      This are the following libraries used:
+      
       ```
          * [Pytesseract](https://pypi.org/project/pytesseract/)
          * [Tensorflow](https://tensorflow.org)
@@ -34,8 +40,8 @@
 
 
 # License
-   
+
   * [LICENSE_1](https://github.com/ravireddy07/TEKSystems_Hackathon/LICENSE_1)
-   
-   
+
+
   * [LICENSE_2](https://github.com/ravireddy07/TEKSystems_Hackathon/LICENSE_2)
