@@ -233,6 +233,7 @@ def genre(self, m):
             se = col['emotion'].value_counts()
             gen = se[se == max(se.values)].index[0]
 
+
             
         if(gen=="happy"):
             genre = "Family-Entertainer"
@@ -338,6 +339,7 @@ def predict(self):
 
 
             
+
         def image_movie(self, arr):
         for i in range(len(arr)):
             if arr[i] in self.df5.iloc[:, -1].values:
@@ -368,7 +370,11 @@ while ext!=1:
         continue
     elif choice == 2:
         print("Queries can be framed using the following to get optimum results:")
+
         print("1.characters\n2.plot\n3.genre\n4.attitude\n5.appearances\n6.year\n7.songs\n8.length\n9.variation\n10.predict\n11.emotion\n12.role\n13.exit\n14.movie\n15.emotions\n16.character\n")
+
+        print("1.characters\n2.plot\n3.genre\n4.year\n5.songs\n6.length\n7.role\n8.exit\n9.character\n")
+ 
         ob = NLP()
         ob.input_query()
         tensor = ob.processing()
@@ -453,4 +459,4 @@ while ext!=1:
             print("Query does not contain enough parameters.")
 
     
-        
+
