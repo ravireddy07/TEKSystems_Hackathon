@@ -2,3 +2,7 @@ lead role
 Genre 
 Length
 songs
+plot
+year
+character
+

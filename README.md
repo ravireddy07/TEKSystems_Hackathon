@@ -1,6 +1,6 @@
 ## TEKSystems_HiringHackathon
 
-       TEK Systems Hiring Final Round, 48 hour based Hackathon.
+__TEK Systems Hiring Final Round, 48 hour based Hackathon__.
 
 
 
@@ -26,11 +26,11 @@ If you have a little information about a movie and wants to know more about it w
 
 ## opencv
 
-    Here, OpenCV __build and source__ files are not included in the Repo due to big size.
+Here, OpenCV __build and source__ files are not included in the Repo due to big size.
 
-    So, we have included those files in [G-Drive](https://drive.google.com/open?id=1hJIj4qZ1DPpRZxODQz6kRVLxDTADdyLo).
+So, we have included those files in [G-Drive](https://drive.google.com/open?id=1hJIj4qZ1DPpRZxODQz6kRVLxDTADdyLo).
 
-    Download those files/folder and place it in workspace along with __README__ and __movie_data_analysis.py__.
+Download those files/folder and place it in workspace along with __README__ and __movie_data_analysis.py__.
 
 
 ## Prerequisites
@@ -53,6 +53,7 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
 ### Libraries Used/Required
 
        This are the following libraries used:
+
 
     **Input Libraries**
 
@@ -79,28 +80,30 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
          * [Scikit-Learn](https://scikit-learn.org/)
 
 
+
 ## Roles of Team Members
 
-```
     1. G Ravi Kanth        -      Text and Image Processing
     2. S Naga Sai Sasank Sarma -  Text and Image Processing
     3. B Rohit Sai         -      Data Processing and Visualization
     4. Prem Narayan Nagar  -      Data Processing and Visualization
-```
+
 
 ## Resources
 
-     * GitHub Forums: <https://github.community/>
+     * [GitHub Forums](https://github.community/)
 
-     * Homepage: <https://opencv.org>
+     * [Homepage](https://opencv.org)
 
-     * Docs: <https://docs.opencv.org/master/>
+     * [Docs](https://docs.opencv.org/master/)
 
-     * Q&A forum: <http://answers.opencv.org>
+     * [Q&A forum](http://answers.opencv.org)
 
-     * Issue tracking: <https://github.com/opencv/opencv/issues>
+     * [Issue tracking](https://github.com/opencv/opencv/issues)
 
-     * Tensorflow Docs: <https://www.tensorflow.org/api_docs>
+     * [Tensorflow Docs](https://www.tensorflow.org/api_docs)
+     
+     * <https://github.com/llSourcell/Learn-Natural-Language-Processing-Curriculum/blob/master/README.md>
 
      * Udacity Discussion Forums and Few Slack Workspaces.
 
@@ -109,6 +112,7 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
 # License
 
   * [LICENSE_1](https://github.com/ravireddy07/TEKSystems_Hackathon/blob/master/LICENSE_1.txt)
+
 
 
   * [LICENSE_2](https://github.com/ravireddy07/TEKSystems_Hackathon/blob/master/LICENSE_2.txt)
