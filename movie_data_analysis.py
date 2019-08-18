@@ -66,3 +66,12 @@ class Visualize:
         self.df4 = pd.read_csv('./movie_plot.csv')
         self.df5 = pd.read_csv('./movie_all.csv')
 
+
+def genre(self, m):
+        col = self.df2[self.df2['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the genre.", sep="")
+            return
+        se = col['emotion'].value_counts()
+        gen = se[se == max(se.values)].index[0]
+
