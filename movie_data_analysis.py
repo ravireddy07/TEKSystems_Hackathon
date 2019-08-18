@@ -65,3 +65,4 @@ class Visualize:
         self.df3 = pd.read_csv('./movie_singer_count.csv')
         self.df4 = pd.read_csv('./movie_plot.csv')
         self.df5 = pd.read_csv('./movie_all.csv')
+
