@@ -9,28 +9,26 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-#Ravi Contribution
 class ImageProcessing:
     def image_process(self):
         import pytesseract
         from PIL import Image
         import cv2
         import os
+        
         path=r'c:\data_analysis'
-        img_path=input("Enter the complete path of the image file") #Loading Image to process
+        img_path=input("Enter the complete path of the image file") #loading
         img=Image.open(img_path)
-
         if not os.path.exists(path):
             os.makedirs(path)
         print("Hold until we process your Image.....")
         image_data = np.asarray(img)
-
-        dst = cv2.fastNlMeansDenoisingColored(image_data,None,10,10,7,21)
+        dst = cv2.fastNlMeansDenoisingColored(image_data,None,10,10,7,21) #Denoiseing
         cv2.imwrite(r'c:\data_analysis\deionise.png', dst)
+        
         pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract 4.0.0/tesseract.exe"
         pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
         gray = cv2.cvtColor(image_data, cv2.COLOR_BGR2GRAY)
-
         cv2.imwrite(r'c:\data_analysis\enhancedGrayscaleLineCapture.png', gray)
         th1 = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
                                     cv2.THRESH_BINARY,11,2)
@@ -42,24 +40,20 @@ class ImageProcessing:
         green_edges = cv2.Canny(green, 100, 10)
         red_edges = cv2.Canny(red, 100, 10)
         edges = blue_edges | green_edges | red_edges
-
+        
         cv2.imwrite(r'c:\data_analysis\enhancedGrayscaleThresholdLineCapture.png', th2)
         cv2.imwrite(r'c:\data_analysis\bluegreenred.png', edges)
         img2=Image.open(r'c:\data_analysis\enhancedGrayscaleThresholdLineCapture.png')
         img1=Image.open(r'c:\data_analysis\bluegreenred.png')
         images=Image.open(r'c:\data_analysis\deionise.png')
-
         result=pytesseract.image_to_string(images,lang='eng')
         output_temp=result.split()
-
         for i in range(len(output_temp)):
             output_temp[i]=output_temp[i].lower()
         output_vectors=[]
         return output_temp
-#Ravi Contribution Ended
 
 
-#Sasank Contribution
 class NLP:
     def __init__(self):
         self.output_vectors=[]
@@ -69,7 +63,7 @@ class NLP:
         self.output=[]
         self.num_words=1000
         self.number_of_constraints=0
-        ck = pd.read_csv(r"C:\Users\Feroz\Downloads\Compressed\mouna\movie_data_analysis-master\Movie Analysis\const_key.csv")
+        ck = pd.read_csv(r"C:\Users\Feroz\Downloads\Compressed\mouna\movie_data_analysis-master\Movie Analysis\const_key.csv")  #ck.iloc[:, 0]
         self.keywords=ck.iloc[0:3, 1].tolist()
         self.constraints = (ck.iloc[:, 0]).tolist()
         self.input_text = ""
@@ -86,7 +80,6 @@ class NLP:
         tokenizer=Tokenizer(num_words=self.num_words)
         tokenizer.fit_on_texts(l)
         token_outputs=tokenizer.word_index
-
         for i in range(len(self.temp)):
             self.input_text_vectors.append(token_outputs[self.temp[i]])
         for j in range(len(self.constraints)):
@@ -119,10 +112,7 @@ class NLP:
         else:
             print("Not enough keywords")
             self.input_query()
-#Sasank Contribution Ended
 
-
-#Prem Contribution
 class Visualize:
     def __init__(self):
         self.df1 = pd.read_csv(r'C:\Users\Feroz\Downloads\Compressed\mouna\movie_data_analysis-master\Movie Analysis\movie_name_char_mentions_centrality.csv')
@@ -138,10 +128,10 @@ class Visualize:
             return
         ser = col['name']
         result = 'actor' in ser.values
-
         if(result):
             print("The lead role is 'actor'")
             print("The type of role played is: ", col[col['name'].values=='actor']['character'])
+
         else:
             col = col.sort_values(by=['count'], ascending=False)
             ser = col['name']
@@ -201,6 +191,7 @@ class Visualize:
         print("The average centrality is: ", self.df1[self.df1['index']==ind]['average centrality'].values[0])
         print("The total centrality is: ", self.df1[self.df1['index']==ind]['total centrality'].values[0])
 
+
     def year(self, m):
         col = self.df2[self.df2['movie'] == m]
         if(col.empty):
@@ -252,12 +243,12 @@ class Visualize:
         if(n==1):
             print('\nThe least expressed emotion in the film is "',se[se == mini].index[0],'"'," and constitutes to ", min_per,"%", sep="")
 
+            
+        if(n==0):
+            self.create_wordcloud(col)
 
         if(n==0):
-            self.create_wordcloud(col)  #WordCloud Created
-
-        if(n==0):
-            self.genre(m)  #Genre of the film
+            self.genre(m)
 
     def create_wordcloud(self, q):
         from wordcloud import WordCloud, STOPWORDS
@@ -295,7 +286,8 @@ class Visualize:
         se = col['emotion'].value_counts()
         gen = se[se == max(se.values)].index[0]
 
-#fuzzying the output
+  #fuzzying the output
+
         if(gen=="happy"):
             genre = "Family-Entertainer"
         elif(gen == "neutral"):
@@ -313,7 +305,7 @@ class Visualize:
         print("GENRE:")
         print("The movie ", m, " is a ", genre, " genre film.", sep="")
 
-#Results Length of the Movie
+        
     def length_of_movie(self, m):
         col = self.df1[self.df1['movie']==m]
         if(col.empty):
@@ -338,7 +330,6 @@ class Visualize:
             length = est_time - 10
         print("The predicted length of movie ", m, " on the basis of Centrality and Mentions is about ", np.round((length/60), 2),sep="")
 
-#Results Trends in the movie...
     def trends(self, bol):
         df = {}
         for i in range(10):
@@ -357,20 +348,20 @@ class Visualize:
     def predict(self):
         df_area = self.trends(False)
         print(df_area)
-        z = pd.read_csv('./trend_emotion.csv') #Data Preprocessimg
+        # Data-Preprocessing
+        z = pd.read_csv('./trend_emotion.csv')
         X = z.iloc[:, :-1]
         y = z.iloc[:, -1]
-
+        # Spliting Data
         from sklearn.model_selection import train_test_split
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
+        # Linear Regression
         from sklearn.linear_model import LinearRegression
         lm = LinearRegression()
         lm.fit(X_train, y_train)
         predictions_lin = lm.predict(X_test)
 
-
-
+        # Calculating the Result in terms of errors
         from sklearn import metrics
         result = list()
         result.append(metrics.mean_squared_error(y_test, predictions_lin))
@@ -384,7 +375,6 @@ class Visualize:
         result = lm.predict([new])
         print("\nThe predicted year according the values given is ",result[0])
 
-#through the image of the movie
     def image_movie(self, arr):
         for i in range(len(arr)):
             if arr[i] in self.df5.iloc[:, -1].values:
@@ -400,9 +390,11 @@ class Visualize:
         print("Could not find the movie in the dataset. Try another image.")
 
 
+        
+        
+#Main Code
 
-# Main Code
-ext = 0
+ext = 0         
 while ext!=1:
     obj = Visualize()
     print("\n")
@@ -497,4 +489,4 @@ while ext!=1:
             print("Process Interupt")
             ext = 1
         else:
-            print("Query does not contain enough parameters/things.")
+            print("Query does not contain enough parameters.")
