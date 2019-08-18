@@ -1,3 +1,4 @@
+#Ravi Contribution
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -9,13 +10,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+#Ravi Contribution
 class ImageProcessing:
     def image_process(self):
         import pytesseract
         from PIL import Image
         import cv2
         import os
-        
+
         path=r'c:\data_analysis'
         img_path=input("Enter the complete path of the image file") #loading
         img=Image.open(img_path)
@@ -25,7 +27,7 @@ class ImageProcessing:
         image_data = np.asarray(img)
         dst = cv2.fastNlMeansDenoisingColored(image_data,None,10,10,7,21) #Denoiseing
         cv2.imwrite(r'c:\data_analysis\deionise.png', dst)
-        
+
         pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract 4.0.0/tesseract.exe"
         pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
         gray = cv2.cvtColor(image_data, cv2.COLOR_BGR2GRAY)
@@ -40,7 +42,7 @@ class ImageProcessing:
         green_edges = cv2.Canny(green, 100, 10)
         red_edges = cv2.Canny(red, 100, 10)
         edges = blue_edges | green_edges | red_edges
-        
+
         cv2.imwrite(r'c:\data_analysis\enhancedGrayscaleThresholdLineCapture.png', th2)
         cv2.imwrite(r'c:\data_analysis\bluegreenred.png', edges)
         img2=Image.open(r'c:\data_analysis\enhancedGrayscaleThresholdLineCapture.png')
@@ -52,8 +54,11 @@ class ImageProcessing:
             output_temp[i]=output_temp[i].lower()
         output_vectors=[]
         return output_temp
+#ravi Contribution ended
 
 
+
+#Sasank Contribution
 class NLP:
     def __init__(self):
         self.output_vectors=[]
@@ -112,7 +117,11 @@ class NLP:
         else:
             print("Not enough keywords")
             self.input_query()
+#Sasank Contribution ended
 
+
+
+#Prem Contribution
 class Visualize:
     def __init__(self):
         self.df1 = pd.read_csv(r'C:\Users\Feroz\Downloads\Compressed\mouna\movie_data_analysis-master\Movie Analysis\movie_name_char_mentions_centrality.csv')
@@ -243,7 +252,7 @@ class Visualize:
         if(n==1):
             print('\nThe least expressed emotion in the film is "',se[se == mini].index[0],'"'," and constitutes to ", min_per,"%", sep="")
 
-            
+
         if(n==0):
             self.create_wordcloud(col)
 
@@ -277,7 +286,10 @@ class Visualize:
         plt.tight_layout(pad = 0)
         plt.show()
         print("Note: The the size of the word increases with higher expressed emotion.")
+#Prem Contribution ended
 
+
+#Rohit Contribution
     def genre(self, m):
         col = self.df2[self.df2['movie']==m]
         if(col.empty):
@@ -305,7 +317,7 @@ class Visualize:
         print("GENRE:")
         print("The movie ", m, " is a ", genre, " genre film.", sep="")
 
-        
+
     def length_of_movie(self, m):
         col = self.df1[self.df1['movie']==m]
         if(col.empty):
@@ -388,13 +400,13 @@ class Visualize:
                 self.length_of_movie(m)
                 return
         print("Could not find the movie in the dataset. Try another image.")
+#Rohit Contribution ended
 
 
-        
-        
+
 #Main Code
 
-ext = 0         
+ext = 0
 while ext!=1:
     obj = Visualize()
     print("\n")
@@ -483,7 +495,6 @@ while ext!=1:
         elif tensor[i]=="variation":
             obj.trends(True)
             print("\n")
-
 
         elif tensor[i]=="exit":
             print("Process Interupt")
