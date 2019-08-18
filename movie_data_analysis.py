@@ -50,6 +50,8 @@ class NLP:
             for value,vectors in token_outputs.items():
                 if (self.output_vectors[q]==vectors):
                     self.output.append(value)
+                    
+                    
         if 'predict' in self.output:
             return self.output
         if self.number_of_constraints <= self.key_count:
@@ -74,4 +76,5 @@ def genre(self, m):
             return
         se = col['emotion'].value_counts()
         gen = se[se == max(se.values)].index[0]
+
 
