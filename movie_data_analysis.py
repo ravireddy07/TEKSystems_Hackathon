@@ -155,6 +155,12 @@ while ext!=1:
         ob = NLP()
         ob.input_query()
         tensor = ob.processing()
+    elif choice == 3:
+        print("Interupt Process")
+        break;
+    else:
+        print("Invalid Input")
+        continue
     
         
 
