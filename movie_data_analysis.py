@@ -57,10 +57,12 @@ class NLP:
         else:
             print("Not enough keywords")
             self.input_query()
-def predict(self):
-        df_area = self.trends(False)
-        print(df_area)
-        # Data-Preprocessing
-        z = pd.read_csv('./trend_emotion.csv')
-        X = z.iloc[:, :-1]
-        y = z.iloc[:, -1]
+
+class Visualize:
+    def __init__(self):
+        self.df1 = pd.read_csv('./movie_name_char_mentions_centrality.csv')
+        self.df2 = pd.read_csv('./movie_emotion_year.csv')
+        self.df3 = pd.read_csv('./movie_singer_count.csv')
+        self.df4 = pd.read_csv('./movie_plot.csv')
+        self.df5 = pd.read_csv('./movie_all.csv')
+
