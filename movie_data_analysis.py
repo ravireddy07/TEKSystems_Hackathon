@@ -67,8 +67,6 @@ class Visualize:
         self.df5 = pd.read_csv('./movie_all.csv')
 
 
-
-
 def genre(self, m):
         col = self.df2[self.df2['movie']==m]
         if(col.empty):
@@ -76,3 +74,4 @@ def genre(self, m):
             return
         se = col['emotion'].value_counts()
         gen = se[se == max(se.values)].index[0]
+
