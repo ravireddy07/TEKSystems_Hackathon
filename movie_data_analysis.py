@@ -114,6 +114,7 @@ class NLP:
             for value,vectors in token_outputs.items():
                 if (self.output_vectors[q]==vectors):
                     self.output.append(value)
+
         if 'predict' in self.output:
             return self.output
         if self.number_of_constraints <= self.key_count:
@@ -130,3 +131,101 @@ def predict(self):
         z = pd.read_csv('./trend_emotion.csv')
         X = z.iloc[:, :-1]
         y = z.iloc[:, -1]
+
+class Visualize:
+    def __init__(self):
+        self.df1 = pd.read_csv('./movie_name_char_mentions_centrality.csv')
+        self.df2 = pd.read_csv('./movie_emotion_year.csv')
+        self.df3 = pd.read_csv('./movie_singer_count.csv')
+        self.df4 = pd.read_csv('./movie_plot.csv')
+        self.df5 = pd.read_csv('./movie_all.csv')
+
+
+
+    def lead_role(self, q):
+        col = self.df1[self.df1['movie']==q]
+        if(col.empty):
+            print("The movie ", q, " is not found in the database. Cannot find the lead role", sep="")
+            return
+        ser = col['name']
+        result = 'actor' in ser.values
+        if(result):
+            print("The lead role is 'actor'")
+            print("The type of role played is: ", col[col['name'].values=='actor']['character'])
+
+        else:
+            col = col.sort_values(by=['count'], ascending=False)
+            ser = col['name']
+            nam = ser.values[0]
+            ind = ser[ser==nam].index[0]
+            print("The lead role is:", nam)
+            print("The type of role played is: ", self.df1[self.df1['index']==ind]['character'].values[0])
+
+
+    def characters(self, q):
+        col = self.df1[self.df1['movie']==q]
+        if(col.empty):
+            print("The movie ", q, " is not found in the database. Cannot find the characters", sep="")
+            return
+        ser = col['name']
+        print("The characters in the movies", q, "include:")
+        print(col[['name', 'character']])
+
+
+    def character(self, q, m):
+        col = self.df1[self.df1['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the character", sep="")
+            return
+        ser = col['name']
+        nam = "NULL"
+        try:
+            nam = ser[ser==q].values[0]
+        except IndexError as e:
+            print("The character ", q, " is not found in the database.Cannot find the character.", sep="")
+            return
+        ind = ser[ser==nam].index[0]
+        print("The role is:", nam)
+        print("The type of role played is: ", self.df1[self.df1['index']==ind]['character'].values[0])
+
+
+
+    def plot(self, m):
+        pd.set_option('display.max_colwidth', -1)
+        col = self.df4[self.df4['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the plot of the movie", sep="")
+            return
+        print("The plot of the film goes like: ")
+        print(col['plot'])
+
+def genre(self, m):
+        col = self.df2[self.df2['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the genre.", sep="")
+            return
+        se = col['emotion'].value_counts()
+        gen = se[se == max(se.values)].index[0]
+
+        def genre(self, m):
+            col = self.df2[self.df2['movie']==m]
+            if(col.empty):
+                print("The movie ", m, " is not found in the database. Cannot find the genre.", sep="")
+                return
+            se = col['emotion'].value_counts()
+            gen = se[se == max(se.values)].index[0]
+        def image_movie(self, arr):
+        for i in range(len(arr)):
+            if arr[i] in self.df5.iloc[:, -1].values:
+                m = arr[i]
+                print(arr[i])
+                self.lead_role(m)
+                self.characters(m)
+                self.plot(m)
+                self.year(m)
+                self.songs(m)
+                self.average_emotion(m, 0)
+                self.length_of_movie(m)
+                return
+        print("Could not find the movie in the dataset. Try another image.")
+
