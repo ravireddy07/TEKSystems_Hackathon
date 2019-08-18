@@ -117,6 +117,24 @@ class Visualize:
         print("The type of role played is: ", self.df1[self.df1['index']==ind]['character'].values[0])
 
 
+
+    def plot(self, m):
+        pd.set_option('display.max_colwidth', -1)
+        col = self.df4[self.df4['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the plot of the movie", sep="")
+            return
+        print("The plot of the film goes like: ")
+        print(col['plot'])
+
+def genre(self, m):
+        col = self.df2[self.df2['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the genre.", sep="")
+            return
+        se = col['emotion'].value_counts()
+        gen = se[se == max(se.values)].index[0]
+
         def genre(self, m):
             col = self.df2[self.df2['movie']==m]
             if(col.empty):
@@ -139,4 +157,5 @@ class Visualize:
                 return
         print("Could not find the movie in the dataset. Try another image.")
         
+
 
