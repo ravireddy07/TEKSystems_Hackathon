@@ -57,3 +57,10 @@ class NLP:
         else:
             print("Not enough keywords")
             self.input_query()
+def predict(self):
+        df_area = self.trends(False)
+        print(df_area)
+        # Data-Preprocessing
+        z = pd.read_csv('./trend_emotion.csv')
+        X = z.iloc[:, :-1]
+        y = z.iloc[:, -1]
