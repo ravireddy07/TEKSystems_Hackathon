@@ -14,10 +14,10 @@ class NLP:
         self.input_text = ""
         self.temp =[]
         self.key_count = 0
-        
+
     def input_query(self):
         self.input_text=input("Enter Your Query:\n")
-        
+
     def processing(self):
         self.temp=(self.input_text).split(" ")
         l1=self.temp+self.constraints+self.keywords
@@ -68,7 +68,7 @@ class Visualize:
         self.df4 = pd.read_csv('./movie_plot.csv')
         self.df5 = pd.read_csv('./movie_all.csv')
 
-        
+
 
     def lead_role(self, q):
         col = self.df1[self.df1['movie']==q]
@@ -80,7 +80,7 @@ class Visualize:
         if(result):
             print("The lead role is 'actor'")
             print("The type of role played is: ", col[col['name'].values=='actor']['character'])
-            
+
         else:
             col = col.sort_values(by=['count'], ascending=False)
             ser = col['name']
@@ -88,8 +88,8 @@ class Visualize:
             ind = ser[ser==nam].index[0]
             print("The lead role is:", nam)
             print("The type of role played is: ", self.df1[self.df1['index']==ind]['character'].values[0])
-            
-            
+
+
     def characters(self, q):
         col = self.df1[self.df1['movie']==q]
         if(col.empty):
@@ -99,7 +99,7 @@ class Visualize:
         print("The characters in the movies", q, "include:")
         print(col[['name', 'character']])
 
-        
+
     def character(self, q, m):
         col = self.df1[self.df1['movie']==m]
         if(col.empty):
@@ -116,6 +116,24 @@ class Visualize:
         print("The role is:", nam)
         print("The type of role played is: ", self.df1[self.df1['index']==ind]['character'].values[0])
 
+
+
+    def plot(self, m):
+        pd.set_option('display.max_colwidth', -1)
+        col = self.df4[self.df4['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the plot of the movie", sep="")
+            return
+        print("The plot of the film goes like: ")
+        print(col['plot'])
+
+def genre(self, m):
+        col = self.df2[self.df2['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the genre.", sep="")
+            return
+        se = col['emotion'].value_counts()
+        gen = se[se == max(se.values)].index[0]
 
         def genre(self, m):
             col = self.df2[self.df2['movie']==m]
@@ -138,6 +156,8 @@ class Visualize:
                 self.length_of_movie(m)
                 return
         print("Could not find the movie in the dataset. Try another image.")
+        
+        
 # input using NLP
 ext = 0         # checking for exit condition  
 while ext!=1:
@@ -182,4 +202,5 @@ while ext!=1:
             print("\n")
     
         
+
 
