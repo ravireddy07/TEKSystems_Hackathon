@@ -67,6 +67,15 @@ class Visualize:
         self.df3 = pd.read_csv('./movie_singer_count.csv')
         self.df4 = pd.read_csv('./movie_plot.csv')
         self.df5 = pd.read_csv('./movie_all.csv')
+        
+    def characters(self, q):
+        col = self.df1[self.df1['movie']==q]
+        if(col.empty):
+            print("The movie ", q, " is not found in the database. Cannot find the characters", sep="")
+            return
+        ser = col['name']
+        print("The characters in the movies", q, "include:")
+        print(col[['name', 'character']])
 
 
 def genre(self, m):
