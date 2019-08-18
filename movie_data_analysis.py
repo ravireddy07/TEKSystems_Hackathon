@@ -163,6 +163,26 @@ class Visualize:
         if(col.empty):
             print("The movie ", m, " is not found in the database. Cannot find average emotion.", sep="")
             return
+        se = col['emotion'].value_counts()
+        if(n==0):
+            fig, ax = plt.subplots(figsize=(12, 6), subplot_kw=dict(aspect="equal"))
+            recipe = se.index
+            data = se.values
+            wedges, texts = ax.pie(data, wedgeprops=dict(width=0.5), startangle=-40)
+            bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
+            kw = dict(xycoords='data', textcoords='data', arrowprops=dict(arrowstyle="-"),
+                      bbox=bbox_props, zorder=0, va="center")
+            for i, p in enumerate(wedges):
+                ang = (p.theta2 - p.theta1)/2. + p.theta1
+                y = np.sin(np.deg2rad(ang))
+                x = np.cos(np.deg2rad(ang))
+                horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+                connectionstyle = "angle,angleA=0,angleB={}".format(ang)
+                kw["arrowprops"].update({"connectionstyle": connectionstyle})
+                ax.annotate(recipe[i], xy=(x, y), xytext=(1.35*np.sign(x), 1.4*y),horizontalalignment=horizontalalignment, **kw)
+            ax.set_title("Average Emotion")
+        
+            plt.show()
         
 
 def genre(self, m):
