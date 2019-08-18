@@ -50,8 +50,7 @@ class NLP:
             for value,vectors in token_outputs.items():
                 if (self.output_vectors[q]==vectors):
                     self.output.append(value)
-                    
-                    
+
         if 'predict' in self.output:
             return self.output
         if self.number_of_constraints <= self.key_count:
@@ -60,6 +59,7 @@ class NLP:
             print("Not enough keywords")
             self.input_query()
 
+
 class Visualize:
     def __init__(self):
         self.df1 = pd.read_csv('./movie_name_char_mentions_centrality.csv')
@@ -67,6 +67,7 @@ class Visualize:
         self.df3 = pd.read_csv('./movie_singer_count.csv')
         self.df4 = pd.read_csv('./movie_plot.csv')
         self.df5 = pd.read_csv('./movie_all.csv')
+
         
 
     def lead_role(self, q):
