@@ -161,6 +161,25 @@ while ext!=1:
     else:
         print("Invalid Input")
         continue
+    count = tensor[0]
+    for i in range(1, tensor[0]+1):
+        
+        if tensor[i]=="role":
+            obj.lead_role(tensor[i + count])
+            print("\n")
+            
+        elif tensor[i]=="characters":
+            obj.characters(tensor[i+count])
+            print("\n")
+        
+        elif tensor[i]=="attitude":
+            obj.character(tensor[i+count], tensor[i+count+1])
+            count += 1
+            print("\n")
+        
+        elif tensor[i]=="plot":
+            obj.plot(tensor[i+count])
+            print("\n")
     
         
 
