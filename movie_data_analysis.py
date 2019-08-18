@@ -46,17 +46,7 @@ class NLP:
                         print("Query does not contain enough parameters.")
                         return self.processing()
         self.output.append(self.number_of_constraints)
-        for q in range(len(self.output_vectors)):
-            for value,vectors in token_outputs.items():
-                if (self.output_vectors[q]==vectors):
-                    self.output.append(value)
-        if 'predict' in self.output:
-            return self.output
-        if self.number_of_constraints <= self.key_count:
-            return self.output
-        else:
-            print("Not enough keywords")
-            self.input_query()
+        
 def predict(self):
         df_area = self.trends(False)
         print(df_area)
