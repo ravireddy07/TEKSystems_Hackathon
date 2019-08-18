@@ -138,5 +138,11 @@ class Visualize:
                 self.length_of_movie(m)
                 return
         print("Could not find the movie in the dataset. Try another image.")
+# input using NLP
+ext = 0         # checking for exit condition  
+while ext!=1:
+    obj = Visualize()
+    print("\n")
+    choice = int(input("Enter your choice:\n1.Image Input\n2.Text Input\n3.Exit\n"))
         
 
