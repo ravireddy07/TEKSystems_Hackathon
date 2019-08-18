@@ -3,9 +3,10 @@
        TEK Systems Hiring Final Round, 48 hour based Hackathon.
 
 
+
 # Movie Analysis
 
-  If you have a little information about a movie and wants to know more about it with that little hint/thing, This problem statement will help you to find the complete details and information about the movie using that hint which you'll provide as an input.
+If you have a little information about a movie and wants to know more about it with that little hint/thing, This problem statement will help you to find the complete details and information about the movie using that hint which you'll provide as an input.
 
 
 ## Problem Statement Usecases:
