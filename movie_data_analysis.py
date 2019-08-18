@@ -183,6 +183,24 @@ class Visualize:
             ax.set_title("Average Emotion")
         
             plt.show()
+
+
+        maxi = max(se.values)
+        mini = min(se.values)
+        max_per = (maxi/sum(se.values))*100
+        min_per = (mini/sum(se.values))*100
+        if(n==2):
+            print('\nThe most expressed emotion in the film is "',se[se == maxi].index[0],'"'," and constitutes to ", max_per,"%",sep="")
+        if(n==1):
+            print('\nThe least expressed emotion in the film is "',se[se == mini].index[0],'"'," and constitutes to ", min_per,"%", sep="")
+       
+        # creating word cloud
+        if(n==0):
+            self.create_wordcloud(col)
+        
+        if(n==0):
+            # genre of the film
+            self.genre(m)
         
 
 def genre(self, m):
