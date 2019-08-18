@@ -216,6 +216,18 @@ class Visualize:
 
             for words in tokens: 
                 comment_words = comment_words + words + ' '
+
+        wordcloud = WordCloud(width = 800, height = 800, 
+                        background_color ='white', 
+                        stopwords = stopwords, 
+                        min_font_size = 10).generate(' '.join(q['emotion'])) 
+
+        plt.figure(figsize = (4, 4), facecolor = None) 
+        plt.imshow(wordcloud) 
+        plt.axis("off") 
+        plt.tight_layout(pad = 0) 
+        plt.show()
+        print("Note: The the size of the word increases with higher expressed emotion.")
         
 
 def genre(self, m):
