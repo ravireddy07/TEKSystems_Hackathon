@@ -201,6 +201,21 @@ class Visualize:
         if(n==0):
             # genre of the film
             self.genre(m)
+
+    def create_wordcloud(self, q):
+        from wordcloud import WordCloud, STOPWORDS 
+        print("\n\nThe wordcloud created for the emotions of the data in the film:\n")
+        comment_words = ' '
+        stopwords = set(STOPWORDS) 
+
+        for val in q: 
+            val = str(val) 
+            tokens = val.split()  
+            for i in range(len(tokens)): 
+                tokens[i] = tokens[i].lower() 
+
+            for words in tokens: 
+                comment_words = comment_words + words + ' '
         
 
 def genre(self, m):
