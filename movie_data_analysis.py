@@ -30,12 +30,12 @@ class ImageProcessing:
         #saving the denoised image
         cv2.imwrite(r'c:\data_analysis\deionise.png', dst)
         #to convert tesseract_cmd file to tesseract.exe
-        pytesseract.pytesseract.tesseract_cmd = "C:/Program Files/Tesseract 4.0.0/tesseract.exe"
-        pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
+        pytesseract.pytesseract.tesseract_cmd = "H:/TEKResults/Tesseract 4.0.0/tesseract.exe"
+        pytesseract.pytesseract.tesseract_cmd = 'H:/TEKResults/Tesseract-OCR/tesseract.exe'
         #converting the image into grayscale
         gray = cv2.cvtColor(image_data, cv2.COLOR_BGR2GRAY)
         #saving the grayscale image
-        cv2.imwrite(r'c:\data_analysis\enhancedGrayscaleLineCapture.png', gray)
+        cv2.imwrite(r'H:/TEKResults/enhancedGrayscaleLineCapture.png', gray)
         #to increase the threshold of the image
         th1 = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
                                     cv2.THRESH_BINARY,11,2)
@@ -48,25 +48,17 @@ class ImageProcessing:
         red_edges = cv2.Canny(red, 100, 10)
         edges = blue_edges | green_edges | red_edges
         #saving enhanced gray scale threshold,grayscaled images
-        cv2.imwrite(r'c:\data_analysis\enhancedGrayscaleThresholdLineCapture.png', th2)
-        cv2.imwrite(r'c:\data_analysis\bluegreenred.png', edges)
-        img2=Image.open(r'c:\data_analysis\enhancedGrayscaleThresholdLineCapture.png')
-        img1=Image.open(r'c:\data_analysis\bluegreenred.png')
-        images=Image.open(r'c:\data_analysis\deionise.png')
+        cv2.imwrite(r'H:/TEKResults/enhancedGrayscaleThresholdLineCapture.png', th2)
+        cv2.imwrite(r'H:/TEKResults/bluegreenred.png', edges)
+        img2=Image.open(r'H:/TEKResults/enhancedGrayscaleThresholdLineCapture.png')
+        img1=Image.open(r'H:/TEKResults/bluegreenred.png')
+        images=Image.open(r'H:/TEKResults/deionise.png')
         #extract text from denoised image
         result=pytesseract.image_to_string(images,lang='eng')
         output_temp=result.split()
         for i in range(len(output_temp)):
             output_temp[i]=output_temp[i].lower()
         output_vectors=[]
-        """for i in range(len(output_temp)):
-            output_vectors.append(len(output_temp[i]))
-        x=max(output_vectors)
-        for k in range(len(output_vectors)):
-            if(x==output_vectors[k]):
-                x=k
-                break
-        output=output_temp[x]"""
         return output_temp
 
 
@@ -129,6 +121,8 @@ class NLP:
         else:
             print("Not enough keywords")
             self.input_query()
+
+            
 def predict(self):
         df_area = self.trends(False)
         print(df_area)
