@@ -148,6 +148,15 @@ class Visualize:
             print("The movie ", m, " is not found in the database. Cannot find the year of release.", sep="")
             return
         print("The movie", m, "released in the year",col['year'].values[0])
+
+    def songs(self, m):
+        col = self.df3[self.df3['movie'] == m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the songs data.", sep="")
+            return
+        singers = col['singer_name'].values.tolist()
+        print("The movie", m, "has", col['song_count'].sum(), "songs.\n")
+        print("And the singers are:\n", "\n ".join(singers))
         
 
 def genre(self, m):
