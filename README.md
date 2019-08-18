@@ -1,6 +1,6 @@
 ## TEKSystems_HiringHackathon
 
-       __TEK Systems Hiring Final Round, 48 hour based Hackathon__.
+__TEK Systems Hiring Final Round, 48 hour based Hackathon__.
 
 
 
@@ -9,19 +9,28 @@
 If you have a little information about a movie and wants to know more about it with that little hint/thing, This problem statement will help you to find the complete details and information about the movie using that hint which you'll provide as an input.
 
 
-## Problem Statement Usecases:
 
-  * Medical
+## Scope of Problem statement
 
+```
+  * Text processing
 
+  * Image processing
+
+  * Data Pre-processing
+
+  * Data Visualization
+
+  * Prediction with Machine Learning
+```
 
 ## opencv
 
-    Here, OpenCV __build and source__ files are not included in the Repo due to big size.
+Here, OpenCV __build and source__ files are not included in the Repo due to big size.
 
-    So, we have included those files in [G-Drive](https://drive.google.com/open?id=1hJIj4qZ1DPpRZxODQz6kRVLxDTADdyLo).
+So, we have included those files in [G-Drive](https://drive.google.com/open?id=1hJIj4qZ1DPpRZxODQz6kRVLxDTADdyLo).
 
-    Download those files/folder and place it in workspace along with __README__ and __movie_data_analysis.py__.
+Download those files/folder and place it in workspace along with __README__ and __movie_data_analysis.py__.
 
 
 ## Prerequisites
@@ -45,22 +54,39 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
 
        This are the following libraries used:
 
-      * [Pytesseract](https://pypi.org/project/pytesseract/).
 
-      * [Tensorflow](https://tensorflow.org).
+    **Input Libraries**
 
-      * [OpenCV](https://opencv.org)
+         * [Pytesseract](https://pypi.org/project/pytesseract/)
 
-      * [Numpy](https://numpy.org/)
+         * [Tensorflow](https://tensorflow.org)
 
-      * [Pandas](https://pandas.pydata.org/)
+         * [OpenCV](https://opencv.org)
 
-      * [Matplotlib](https://matplotlib.org/)
+    **Data Pre-processing**
 
-      * [Seaborn](https://seaborn.pydata.org/)
+         * [Numpy](https://numpy.org/)
 
-      * [Scikit-Learn](https://scikit-learn.org/)
+         * [Pandas](https://pandas.pydata.org/)
 
+    **Data Visualization**
+
+         * [Matplotlib](https://matplotlib.org/)
+
+         * [Seaborn](https://seaborn.pydata.org/)
+
+    **ML Libraries**
+
+         * [Scikit-Learn](https://scikit-learn.org/)
+
+
+
+## Roles of Team Members
+
+    1. G Ravi Kanth        -      Text and Image Processing
+    2. S Naga Sai Sasank Sarma -  Text and Image Processing
+    3. B Rohit Sai         -      Data Processing and Visualization
+    4. Prem Narayan Nagar  -      Data Processing and Visualization
 
 
 ## Resources
@@ -86,6 +112,7 @@ Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/
 # License
 
   * [LICENSE_1](https://github.com/ravireddy07/TEKSystems_Hackathon/blob/master/LICENSE_1.txt)
+
 
 
   * [LICENSE_2](https://github.com/ravireddy07/TEKSystems_Hackathon/blob/master/LICENSE_2.txt)
