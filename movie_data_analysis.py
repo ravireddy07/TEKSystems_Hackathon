@@ -199,6 +199,24 @@ class Visualize:
         print("The plot of the film goes like: ")
         print(col['plot'])
 
+    def appearances(self, c, m):
+        col = self.df1[self.df1['movie'] == m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find appearances.", sep="")
+            return
+        ser = col['name']
+        try:
+            nam = ser[ser==c].values[0]
+        except IndexError as e:
+            print("The character ", c, " is not found in the database.Cannot find the appearances.", sep="")
+            return
+        ind = ser[ser==nam].index[0]
+        print("The role is:", nam)
+        print("The number of appearances are: ", self.df1[self.df1['index']==ind]['count'].values[0])
+        print("The average centrality is: ", self.df1[self.df1['index']==ind]['average centrality'].values[0])
+        print("The total centrality is: ", self.df1[self.df1['index']==ind]['total centrality'].values[0])
+        
+
 def genre(self, m):
         col = self.df2[self.df2['movie']==m]
         if(col.empty):
