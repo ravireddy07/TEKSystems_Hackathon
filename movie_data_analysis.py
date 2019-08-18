@@ -144,5 +144,11 @@ while ext!=1:
     obj = Visualize()
     print("\n")
     choice = int(input("Enter your choice:\n1.Image Input\n2.Text Input\n3.Exit\n"))
+    if choice == 1:
+        ob = ImageProcessing()
+        tensor = ob.image_process()
+        obj.image_movie(tensor)
+        continue
+    
         
 
