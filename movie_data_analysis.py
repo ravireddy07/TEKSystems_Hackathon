@@ -114,7 +114,8 @@ class NLP:
             for value,vectors in token_outputs.items():
                 if (self.output_vectors[q]==vectors):
                     self.output.append(value)
-
+                    
+                    
         if 'predict' in self.output:
             return self.output
         if self.number_of_constraints <= self.key_count:
@@ -122,6 +123,7 @@ class NLP:
         else:
             print("Not enough keywords")
             self.input_query()
+
 
             
 def predict(self):
@@ -139,6 +141,8 @@ class Visualize:
         self.df3 = pd.read_csv('./movie_singer_count.csv')
         self.df4 = pd.read_csv('./movie_plot.csv')
         self.df5 = pd.read_csv('./movie_all.csv')
+
+
 
 
 
@@ -189,7 +193,6 @@ class Visualize:
         print("The type of role played is: ", self.df1[self.df1['index']==ind]['character'].values[0])
 
 
-
     def plot(self, m):
         pd.set_option('display.max_colwidth', -1)
         col = self.df4[self.df4['movie']==m]
@@ -215,6 +218,93 @@ class Visualize:
         print("The number of appearances are: ", self.df1[self.df1['index']==ind]['count'].values[0])
         print("The average centrality is: ", self.df1[self.df1['index']==ind]['average centrality'].values[0])
         print("The total centrality is: ", self.df1[self.df1['index']==ind]['total centrality'].values[0])
+
+    def year(self, m):
+        col = self.df2[self.df2['movie'] == m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the year of release.", sep="")
+            return
+        print("The movie", m, "released in the year",col['year'].values[0])
+
+    def songs(self, m):
+        col = self.df3[self.df3['movie'] == m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find the songs data.", sep="")
+            return
+        singers = col['singer_name'].values.tolist()
+        print("The movie", m, "has", col['song_count'].sum(), "songs.\n")
+        print("And the singers are:\n", "\n ".join(singers))
+
+    def average_emotion(self, m, n):
+        col = self.df2[self.df2['movie']==m]
+        if(col.empty):
+            print("The movie ", m, " is not found in the database. Cannot find average emotion.", sep="")
+            return
+        se = col['emotion'].value_counts()
+        if(n==0):
+            fig, ax = plt.subplots(figsize=(12, 6), subplot_kw=dict(aspect="equal"))
+            recipe = se.index
+            data = se.values
+            wedges, texts = ax.pie(data, wedgeprops=dict(width=0.5), startangle=-40)
+            bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
+            kw = dict(xycoords='data', textcoords='data', arrowprops=dict(arrowstyle="-"),
+                      bbox=bbox_props, zorder=0, va="center")
+            for i, p in enumerate(wedges):
+                ang = (p.theta2 - p.theta1)/2. + p.theta1
+                y = np.sin(np.deg2rad(ang))
+                x = np.cos(np.deg2rad(ang))
+                horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+                connectionstyle = "angle,angleA=0,angleB={}".format(ang)
+                kw["arrowprops"].update({"connectionstyle": connectionstyle})
+                ax.annotate(recipe[i], xy=(x, y), xytext=(1.35*np.sign(x), 1.4*y),horizontalalignment=horizontalalignment, **kw)
+            ax.set_title("Average Emotion")
+        
+            plt.show()
+
+
+        maxi = max(se.values)
+        mini = min(se.values)
+        max_per = (maxi/sum(se.values))*100
+        min_per = (mini/sum(se.values))*100
+        if(n==2):
+            print('\nThe most expressed emotion in the film is "',se[se == maxi].index[0],'"'," and constitutes to ", max_per,"%",sep="")
+        if(n==1):
+            print('\nThe least expressed emotion in the film is "',se[se == mini].index[0],'"'," and constitutes to ", min_per,"%", sep="")
+       
+        # creating word cloud
+        if(n==0):
+            self.create_wordcloud(col)
+        
+        if(n==0):
+            # genre of the film
+            self.genre(m)
+
+    def create_wordcloud(self, q):
+        from wordcloud import WordCloud, STOPWORDS 
+        print("\n\nThe wordcloud created for the emotions of the data in the film:\n")
+        comment_words = ' '
+        stopwords = set(STOPWORDS) 
+
+        for val in q: 
+            val = str(val) 
+            tokens = val.split()  
+            for i in range(len(tokens)): 
+                tokens[i] = tokens[i].lower() 
+
+            for words in tokens: 
+                comment_words = comment_words + words + ' '
+
+        wordcloud = WordCloud(width = 800, height = 800, 
+                        background_color ='white', 
+                        stopwords = stopwords, 
+                        min_font_size = 10).generate(' '.join(q['emotion'])) 
+
+        plt.figure(figsize = (4, 4), facecolor = None) 
+        plt.imshow(wordcloud) 
+        plt.axis("off") 
+        plt.tight_layout(pad = 0) 
+        plt.show()
+        print("Note: The the size of the word increases with higher expressed emotion.")
         
 
 def genre(self, m):
@@ -224,6 +314,7 @@ def genre(self, m):
             return
         se = col['emotion'].value_counts()
         gen = se[se == max(se.values)].index[0]
+
 
         def genre(self, m):
             col = self.df2[self.df2['movie']==m]
