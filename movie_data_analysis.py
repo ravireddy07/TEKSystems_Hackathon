@@ -213,6 +213,48 @@ while ext!=1:
         elif tensor[i]=="songs":
             obj.songs(tensor[i+count])
             print("\n")
+
+        elif tensor[i]=="emotion":
+            try:
+                if ("average" in ob.temp):
+                    obj.average_emotion(tensor[i+count], 0)
+                    print("\n")
+                    break
+                elif ("minor" in ob.temp):
+                    obj.average_emotion(tensor[i+count], 1)
+                    print("\n")
+                    break
+                elif ("major" in ob.temp):
+                    obj.average_emotion(tensor[i+count], 2)
+                    print("\n")
+                    break
+                elif("predict" in ob.temp):
+                    obj.predict()
+                    print("\n")
+                    break
+            except IndexError as e:
+                print("Not enough parameters")
+                break
+        
+        elif tensor[i]=="genre":
+            obj.genre(tensor[i+count])
+            print("\n")
+            
+        elif tensor[i]=="length":
+            obj.length_of_movie(tensor[i+count])
+            print("\n")
+
+        elif tensor[i]=="variation":
+            obj.trends(True)
+            print("\n")
+            
+            
+        elif tensor[i]=="exit":
+            print("Process Interupt")
+            ext = 1
+        else:
+            print("Query does not contain enough parameters.")
+
     
         
 
