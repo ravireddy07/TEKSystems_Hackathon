@@ -229,3 +229,49 @@ def genre(self, m):
                 return
         print("Could not find the movie in the dataset. Try another image.")
 
+        
+        
+# input using NLP
+ext = 0         # checking for exit condition  
+while ext!=1:
+    obj = Visualize()
+    print("\n")
+    choice = int(input("Enter your choice:\n1.Image Input\n2.Text Input\n3.Exit\n"))
+    if choice == 1:
+        ob = ImageProcessing()
+        tensor = ob.image_process()
+        obj.image_movie(tensor)
+        continue
+    elif choice == 2:
+        print("Queries can be framed using the following to get optimum results:")
+        print("1.characters\n2.plot\n3.genre\n4.attitude\n5.appearances\n6.year\n7.songs\n8.length\n9.variation\n10.predict\n11.emotion\n12.role\n13.exit\n14.movie\n15.emotions\n16.character\n")
+        ob = NLP()
+        ob.input_query()
+        tensor = ob.processing()
+    elif choice == 3:
+        print("Interupt Process")
+        break;
+    else:
+        print("Invalid Input")
+        continue
+    count = tensor[0]
+    for i in range(1, tensor[0]+1):
+        
+        if tensor[i]=="role":
+            obj.lead_role(tensor[i + count])
+            print("\n")
+            
+        elif tensor[i]=="characters":
+            obj.characters(tensor[i+count])
+            print("\n")
+        
+        elif tensor[i]=="attitude":
+            obj.character(tensor[i+count], tensor[i+count+1])
+            count += 1
+            print("\n")
+        
+        elif tensor[i]=="plot":
+            obj.plot(tensor[i+count])
+            print("\n")
+    
+        
